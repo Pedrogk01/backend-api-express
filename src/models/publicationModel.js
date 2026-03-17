@@ -7,9 +7,9 @@ import {prisma} from '../helpers/dbConnection.js';
 //     avatar: 'https://example.com/avatar.jpg',
 // }
 
-export const createUser = async (user) => {
-    return await prisma.user.create({
-        data: user
+export const createPublication = async (publication) => {
+    return await prisma.publication.create({
+        data: publication
     })
 }
   
