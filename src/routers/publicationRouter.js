@@ -12,6 +12,6 @@ router.get('/', getPublicationController)
 router.post('/', createPublicationController)
 router.put('/', updatePublicationController)
 router.patch('/', patchPublicationController)
-router.delete('/', deletePublicationController)
+router.delete('/:id', deletePublicationController)
 
 export default router 

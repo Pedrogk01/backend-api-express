@@ -1,3 +1,11 @@
-export function getPublicationController(req, res){
- res.send('exemplo de GET na rota /publication respondida pelo controller')
+import { getPublication } from "../../models/publicationModel.js"
+
+export async function getPublicationController(req, res){
+
+    const result = await getPublication()
+
+    res.json({
+        message: "Publicações listadas com sucesso", 
+        publications: result
+    })
 }
