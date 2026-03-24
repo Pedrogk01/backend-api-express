@@ -33,3 +33,12 @@ export const updatePublication = async (publication, id) => {
         }
     })
 }
+
+export const updateTitle = async (title, id) => {
+    return await prisma.publication.update({
+        data: { title },
+        where: {
+            id
+        }
+    })
+}

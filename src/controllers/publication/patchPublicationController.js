@@ -1,3 +1,13 @@
-export function patchPublicationController(req, res){
- res.send('exemplo de PATCH na rota /publication respondida pelo controller')
+import { updateTitle } from "../../models/publicationModel.js";
+
+export async function patchPublicationController(req, res){
+    const { id } = req.params;
+    const { title } = req.body;
+
+    const result = await updateTitle(title, +id)
+
+    return res.json({
+        message: "Título atualizado com sucesso",
+        publication: result
+    })
 }

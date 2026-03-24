@@ -33,3 +33,12 @@ export const updateUser = async (user, id) => {
         }
     })
 }
+
+export const updateAvatar = async (avatar, id) => {
+    return await prisma.user.update({
+        data: { avatar },
+        where: {
+            id
+        }
+    })
+}
