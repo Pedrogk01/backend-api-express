@@ -1,10 +1,9 @@
 import {prisma} from '../helpers/dbConnection.js';
 
-// const user = {
-//     name: 'John Doe',
-//     email: 'john.doe@example.com',
-//     pass: 'securepassword',
-//     avatar: 'https://example.com/avatar.jpg',
+// const publication = {
+//     title: 'My First Publication',
+//     description: 'This is the description of my first publication.',
+//     author: 'John Doe',
 // }
 
 export const createPublication = async (publication) => {
