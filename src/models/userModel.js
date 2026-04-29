@@ -10,10 +10,11 @@ import * as z from 'zod';
 // }
 
 const userSchema = z.object({
-    id: z.int().positive(),
-    avatar: z.string().url('Invalid URL for avatar').max(500),
-    name: z.string().min(3).max(255),
-    email: z.string().email(),
+    id: z.int("id deve ser um valor numerico")
+    .positive("id deve ser um valor numerico positivo"),
+    avatar: z.string("avatar deve ser uma string").url("avatar deve ser url valida").max(500,"url deve ter no maximo 500 caracteres"),
+    name: z.string("nome deve ser uma string").min(3, "nome deve ter no minimo 3 caracteres").max(255, "nome deve ter no maximo 255 caracteres"),
+    email: z.string(em).email(),
     pass: z.string().min(6).max(255),
     
 })
