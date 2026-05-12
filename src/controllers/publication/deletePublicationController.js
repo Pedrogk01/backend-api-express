@@ -1,4 +1,4 @@
-import { deletePublication, validatePublication } from "../../models/publicationModel"
+import { deletePublication, validatePublication } from "../../models/publicationModel.js"
 
 export async function deletePublicationController(req, res){
     const  id  = req.params.id

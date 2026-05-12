@@ -1,5 +1,6 @@
 import {prisma} from '../helpers/dbConnection.js';
-
+import { z } from "zod";
+import { createValidator } from "../helpers/createValidator.js";
 const publicationSchema = z.object({
     id: z.int("Id é obrigatório e deve ser um valor numérico")
       .positive("Id deve ser um valor numérico positivo"),
