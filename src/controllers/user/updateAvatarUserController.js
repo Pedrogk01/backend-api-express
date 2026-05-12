@@ -1,23 +1,34 @@
+import { tr } from "zod/locales";
 import { updateAvatar, validateUser } from "../../models/userModel.js";
 
-export async function updateAvatarUserController(req, res){
-    const { id } = req.params;
-    const user = req.body;
-    user.id = +id;
+export async function updateAvatarUserController(req, res, next) {
+    try {  
+        const { id } = req.params;
+        const user = req.body;
+        user.id = +id;
 
-    const { success, error, data:userValidated } = validateUser({id: +id, avatar: user.avatar}, {id: true, avatar: true})
+        const { success, error, data:userValidated } = validateUser({id: +id, avatar: user.avatar}, {id: true, avatar: true})
 
-    if (!success) {
-        return res.status(400).json({
-            message: "Erro de validação",
-            fieldErrors: error
+        if (!success) {
+            return res.status(400).json({
+                message: "Erro de validação",
+                fieldErrors: error
+            })
+        }
+
+        const result = await updateAvatar(userValidated.avatar, userValidated.id)
+
+        return res.json({
+            message: "Avatar atualizado com sucesso",
+            avatar: result
         })
+    }catch (error) {
+        if (error.code === 'P2025'){
+            console.log(error.message);
+            return res.status(404).json({
+                message: "Usuário não encontrado para ser atualizado",
+            })
+        }  
+        next(error)
     }
-
-    const result = await updateAvatar(userValidated.avatar, userValidated.id)
-
-    return res.json({
-        message: "Avatar atualizado com sucesso",
-        avatar: result
-    })
 }
