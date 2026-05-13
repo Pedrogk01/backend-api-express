@@ -1,21 +1,31 @@
 import { deletePublication, validatePublication } from "../../models/publicationModel.js"
 
-export async function deletePublicationController(req, res){
-    const  id  = req.params.id
+export async function deletePublicationController(req, res, next){
+    try{
+        const id = req.params.id
 
-    const {sucess, error, data} = validatePublication({id: +id})
+        const {success, error, data} = validatePublication({id: +id}, {title: true, description: true, author: true})
 
-    if(!sucess){
-        return res.status(400).json({
-            message: "Erro de validação",
-            fieldErrorserror: error
+        if(!success){
+            return res.status(400).json({
+                message: "Erro de validação",
+                fieldErrors: error
+            })
+        }
+
+        const result = await deletePublication(data.id) 
+
+        return res.json({
+            message: "Publicação deletada com sucesso!",
+            publication: result
         })
+    }catch(error) {
+        if(error.code === 'P2025'){
+            console.log(error.message)
+            return res.status(404).json({
+                message: "Publicação não encontrada para ser deletada."
+            })
+        }
+        next(error)
     }
-
-    const result = await deletePublication(data.id) 
-
-    return res.json({
-        message: "Publicação deletada com sucesso", 
-        publication: result
-    })
 }
