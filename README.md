@@ -15,12 +15,35 @@
 - Qual a responsabilidade de cada Camada?
 - O que é um ORM?
 - Quais as vantagens de utilizar um ORM?
+- Como utilizar parâmetros de Url?
+- O que é Middleware? (Exemplo Logger)
+
+--------- Próximos Tópicos
+
+- Validação de Dados com Zod
+  - Para que serve a biblioteca do Zod?
+  - Para que serve a função Partial?
+  - Qual a diferença do parse para o safeParse?
+- Tratamento de Erros
+  - Qual o papel do ErrorHandler?
+  - Quais erros devem ser tratados pelo ErrorHandler e quais devem ser tratados no try catch do controller?
+  - Quais os parametros de entrada de um middlaweare de ErrorHandler?
+- Query Params (/user/?name=renan)
+  - Como capturar um parametro query da url no Controller?
+  - Para que são utilizados em geral os query params?
+- Autenticação com JWT
+  - Quais as diferenças dos métodos de Autenticação? E como funciona?
+    - Basic Access ou Auth - Base64 (email:pass)
+    - Bearer Token (Opaque)
+    - Bearer Token JWT
+    - Bearer Token JWT + Refresh Token
+  - Quais as características do JWT?
 
 ### Comandos Prisma
 
 Instalação
 - npm i prisma -D
-- npm i dotenv -D
+- npm i dotenv
 para Mysql e Mariadb 
 npm install @prisma/client @prisma/adapter-mariadb mariadb
 

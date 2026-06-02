@@ -10,16 +10,16 @@
     "mvc",
     "middlewares"
   ],
-  "homepage": "https://github.com/Pedrogk01/backend-api-express#readme",
+  "homepage": "https://github.com/renancavichi/backend-api-express-1sem2026#readme",
   "bugs": {
-    "url": "https://github.com/Pedrogk01/backend-api-express/issues"
+    "url": "https://github.com/renancavichi/backend-api-express-1sem2026/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pedrogk01/backend-api-express.git"
+    "url": "git+https://github.com/renancavichi/backend-api-express-1sem2026.git"
   },
   "license": "ISC",
-  "author": "Pedro Teixeira de Oliveira",
+  "author": "Renan Cavichi",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
@@ -29,9 +29,13 @@
   },
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.4.2",
-    "@prisma/client": "^7.5.0",
+    "@prisma/client": "^7.4.2",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mariadb": "^3.5.2",
+    "uuid": "^14.0.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {

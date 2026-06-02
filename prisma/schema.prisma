@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
   output   = "../generated/prisma"
 }
 
@@ -13,11 +13,22 @@ model user {
   name   String @db.VarChar(255)
   email  String @unique
   pass   String @db.VarChar(300)
+
+  sessions session[]
 }
 
 model publication {
   id          Int    @id @default(autoincrement())
   title       String @db.VarChar(255)
-  description String @db.VarChar(500)
+  description String @db.Text
   author      String @db.VarChar(255)
+}
+
+model session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  token     String   @unique @db.VarChar(500)
+  createdAt DateTime @default(now())
+
+  user user @relation(fields: [userId], references: [id])
 }
